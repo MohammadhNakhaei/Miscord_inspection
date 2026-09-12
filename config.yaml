@@ -1,0 +1,92 @@
+camera:
+  mode: basler
+  serial_number: ''
+  exposure_us: 800.0
+  gain_db: 0.0
+  pixel_format: Mono8
+  acquisition_frame_rate: 0.0   # 0 = maximum camera speed
+  grab_timeout_ms: 1000
+  buffer_count: 12
+  reconnect_delay_seconds: 2.0
+  roi:                         # Camera/sensor ROI; width/height 0 = maximum
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  offline_path: 5M25mmUnknowExp1.bmp
+  offline_fps: 20.0
+  offline_loop: true
+  fallback_to_offline: true
+
+detection:
+  algorithm: auto             # auto: profile for panoramic frames, contour otherwise
+  software_roi:
+    x: 0
+    y: 20
+    width: 0
+    height: 0                 # 0 = continue to the bottom; avoids clipping curved cord rows
+  profile_auto_aspect_ratio: 3.0
+  profile_tophat_px: 9
+  profile_path_x_step: 4
+  profile_path_max_step_px: 2
+  profile_path_smoothness: 2.0
+  profile_band_half_height_px: 3
+  profile_border_margin_px: 8
+  profile_min_path_coverage: 0.90
+  profile_presence_min_contrast: 10.0
+  profile_presence_max_gap_px: 60
+  profile_presence_min_run_peaks: 6  # allows a small valid layer segment
+  profile_presence_max_pitch_px: 16.0
+  profile_presence_max_pitch_mad_ratio: 0.45
+  profile_recovery_min_contrast: 2.0
+  profile_recovery_min_neighbor_ratio: 0.10
+  profile_recovery_max_gap_ratio: 1.90  # never fill a full missing-cord gap
+  profile_recovery_search_px: 3
+  profile_complete_min_coverage: 0.90
+  profile_complete_edge_margin_ratio: 0.04
+  profile_background_px: 21
+  profile_peak_window_px: 7
+  profile_peak_percentile: 25.0
+  profile_min_contrast: 1.0
+  profile_min_peak_support_ratio: 0.75  # reject thin edge/reflection peaks
+  profile_maximum_pitch_mad_ratio: 0.35
+  edge_exclusion_pitch_count: 5.0
+  adaptive_block_size: 7
+  adaptive_c: 9.0
+  mask_erode_px: 10
+  mask_open_px: 24
+  intensity_threshold: 113
+  object_open_px: 6
+  min_area_px: 18.0
+  max_area_px: 220.0
+  min_radius_px: 2.5
+  max_radius_px: 12.0
+  min_circularity: 0.55
+  row_tolerance_px: 12.0
+  minimum_threads: 6
+  nominal_pitch_px: 0.0       # 0 = robust automatic estimate
+  missing_gap_ratio: 1.60
+  maximum_pitch_mad_ratio: 0.22
+  minimum_defect_quality_score: 0.55
+  maximum_missing_fraction: 0.20
+  expected_thread_count: 0    # 0 = disabled
+  draw_all_centers: true
+
+runtime:
+  display_max_fps: 25.0
+  stats_interval_seconds: 0.5
+  confirmation_frames: 2
+  alarm_blink_seconds: 4.0
+  duplicate_suppression_seconds: 1.0
+
+storage:
+  save_defects: true
+  directory: defects
+  jpeg_quality: 95
+  queue_size: 100
+
+logging:
+  directory: logs
+  level: INFO
+  max_bytes: 10485760
+  backup_count: 10

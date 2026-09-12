@@ -1,0 +1,5 @@
+numpy>=2.2,<3
+opencv-python>=4.10,<6
+PySide6>=6.8,<7
+PyYAML>=6.0,<7
+pypylon>=4.2,<27
